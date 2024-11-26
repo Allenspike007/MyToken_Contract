@@ -126,8 +126,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-Project Link: [https://github.com/yourusername/mytoken-contract](https://github.com/yourusername/mytoken-contract)
+Your Name - [@allenspike](https://twitter.com/@allenspike)
+Project Link: [https://github.com/Allenspike007/mytoken-contract](https://github.com/Allenspike007/mytoken-contract)
 
 ## Acknowledgments
 
