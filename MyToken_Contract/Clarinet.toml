@@ -1,22 +1,22 @@
 [project]
-name = "MyToken_Contract"
-authors = []
-description = ""
-telemetry = true
-requirements = []
-[contracts.MyToken_Contract]
-path = "contracts/MyToken_Contract.clar"
-depends_on = []
+name = "my-token"
+authors = ["Allen"]
+description = "fungible token smart contract "
+telemetry = false
+requirements = [
+    "SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard"
+]
 
-[repl]
-costs_version = 2
-parser_version = 2
+[contracts.my-token]
+path = "contracts/MyToken_Contract.clar"
+clarity_version = 2
+epoch = 2.1
 
 [repl.analysis]
 passes = ["check_checker"]
 
 [repl.analysis.check_checker]
-strict = false
+strict = true
 trusted_sender = false
 trusted_caller = false
 callee_filter = false
