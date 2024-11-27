@@ -44,3 +44,23 @@
             (map-set balances recipient (+ recipient-balance amount))
             (var-set total-supply (+ (var-get total-supply) amount))
             (ok true))))
+;; Transfer tokens
+(define-public (transfer (amount uint) (sender principal) (recipient principal) (memo (optional (buff 34))))
+    (begin
+        (asserts! (is-eq tx-sender sender) (err u101))
+        (let ((sender-balance (default-to u0 (map-get? balances sender))))
+            (asserts! (>= sender-balance amount) (err u102))
+            (map-set balances sender (- sender-balance amount))
+            (map-set balances recipient (+ (default-to u0 (map-get? balances recipient)) amount))
+            (match memo to-print (print to-print) 0x)
+            (ok true))))
+
+;; Burn tokens
+(define-public (burn (amount uint) (owner principal))
+    (begin
+        (asserts! (is-eq tx-sender owner) (err u101))
+        (let ((current-balance (default-to u0 (map-get? balances owner))))
+            (asserts! (>= current-balance amount) (err u102))
+            (map-set balances owner (- current-balance amount))
+            (var-set total-supply (- (var-get total-supply) amount))
+            (ok true))))
