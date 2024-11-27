@@ -1,0 +1,6 @@
+(define-data-var contract-owner principal tx-sender)
+(define-data-var token-name (string-ascii 32) "MyToken")
+(define-data-var token-symbol (string-ascii 10) "MTK")
+(define-data-var token-uri (optional (string-utf8 256)) none)
+(define-data-var total-supply uint u0)
+(define-data-var decimals uint u6)
