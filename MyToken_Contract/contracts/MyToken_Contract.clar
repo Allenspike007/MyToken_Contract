@@ -64,3 +64,18 @@
             (map-set balances owner (- current-balance amount))
             (var-set total-supply (- (var-get total-supply) amount))
             (ok true))))
+;; Define metadata map
+(define-map metadata {token-id: uint} {name: (string-ascii 64), description: (string-utf8 256)})
+
+;; Set metadata (contract owner only)
+(define-public (set-token-metadata (token-id uint) (name (string-ascii 64)) (description (string-utf8 256)))
+    (begin
+        (asserts! (is-eq tx-sender (var-get contract-owner)) (err u100))
+        (map-set metadata
+            {token-id: token-id}
+            {name: name, description: description})
+        (ok true)))
+
+;; Get metadata
+(define-read-only (get-token-metadata (token-id uint))
+    (map-get? metadata {token-id: token-id}))
