@@ -28,3 +28,19 @@
 
 (define-read-only (get-token-uri)
     (ok (var-get token-uri)))
+;; Define maps
+(define-map balances principal uint)
+
+;; Get account balance
+(define-read-only (get-balance (account principal))
+    (ok (default-to u0 (map-get? balances account))))
+
+;; Mint tokens (contract owner only)
+(define-public (mint (amount uint) (recipient principal))
+    (begin
+        (asserts! (is-eq tx-sender (var-get contract-owner)) (err u100))
+        (asserts! (> amount u0) (err u103))
+        (let ((recipient-balance (default-to u0 (map-get? balances recipient))))
+            (map-set balances recipient (+ recipient-balance amount))
+            (var-set total-supply (+ (var-get total-supply) amount))
+            (ok true))))
