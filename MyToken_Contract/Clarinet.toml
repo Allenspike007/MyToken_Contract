@@ -1,5 +1,5 @@
 [project]
-name = "my-token"
+name = "MyToken_Contract"
 authors = ["Allen"]
 description = "fungible token smart contract "
 telemetry = false
@@ -7,7 +7,7 @@ requirements = [
     "SP3FBR2AGK5H9QBDH3EEN6DF8EK8JY7RX8QJ5SVTE.sip-010-trait-ft-standard"
 ]
 
-[contracts.my-token]
+[contracts.MyToken_Contract]
 path = "contracts/MyToken_Contract.clar"
 clarity_version = 2
 epoch = 2.1
