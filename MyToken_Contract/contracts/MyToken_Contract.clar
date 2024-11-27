@@ -14,3 +14,17 @@
         (asserts! (is-eq tx-sender (var-get contract-owner)) (err u100))
         (var-set contract-owner new-owner)
         (ok true)))
+(define-read-only (get-token-name)
+    (ok (var-get token-name)))
+
+(define-read-only (get-token-symbol)
+    (ok (var-get token-symbol)))
+
+(define-read-only (get-decimals)
+    (ok (var-get decimals)))
+
+(define-read-only (get-total-supply)
+    (ok (var-get total-supply)))
+
+(define-read-only (get-token-uri)
+    (ok (var-get token-uri)))
